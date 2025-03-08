@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File System Result</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f4f4f4;
+      }
+
+      .result-container {
+        text-align: center;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 400px;
+      }
+
+      h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      p {
+        font-size: 18px;
+        margin-bottom: 15px;
+        color: #555;
+      }
+
+      .content {
+        font-family: monospace;
+        white-space: pre-wrap;
+        background: #f8f9fa;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        max-height: 200px;
+        overflow-y: auto;
+        margin-top: 15px;
+      }
+
+      .message {
+        font-weight: bold;
+        color: #007b00;
+      }
+
+      .error {
+        font-weight: bold;
+        color: #d9534f;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="result-container">
+      <h1>Operation Result</h1>
+      <!-- Dynamically display error or success message -->
+      {% if result.error %}
+      <p class="error">{{ result.error }}</p>
+      {% elif result.operation == "read" %}
+      <p class="message">File Content:</p>
+      <div class="content">{{ result.content }}</div>
+      {% else %}
+      <p class="message">{{ result.message }}</p>
+      {% endif %}
+      <!-- Back button to return to the form -->
+      <button onclick="goBack()">Go Back</button>
+    </div>
+
+    <script>
+      // Go back to the main page
+      function goBack() {
+        window.location.href = "/";
+      }
+    </script>
+  </body>
+</html>
